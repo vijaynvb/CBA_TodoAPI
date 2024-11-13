@@ -1,0 +1,1 @@
+﻿https://stalwartlearning.com/events/code-smarter-not-harder-github-copilot-webinar/
