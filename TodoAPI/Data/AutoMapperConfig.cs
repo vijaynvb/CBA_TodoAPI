@@ -8,7 +8,7 @@ namespace TodoAPI.Data
     {
         public AutoMapperConfig()
         {
-            CreateMap<UserDTO,User>();
+            CreateMap<UserDTO,User>().ReverseMap();
 
             CreateMap<Todo,TodoDTO>().ReverseMap().ForMember(dest => dest.TodoUserId, act => act.MapFrom(src => src.UserId));
 

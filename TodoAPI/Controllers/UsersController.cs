@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TodoAPI.Data;
+using TodoAPI.DTO;
 using TodoAPI.Models;
 
 namespace TodoAPI.Controllers
@@ -15,10 +17,12 @@ namespace TodoAPI.Controllers
     public class UsersController : ControllerBase
     {
         private readonly TodoDBContext _context;
+        private readonly IMapper _mapper;
 
-        public UsersController(TodoDBContext context)
+        public UsersController(TodoDBContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/Users
@@ -84,16 +88,18 @@ namespace TodoAPI.Controllers
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<User>> PostUser(UserDTO user)
         {
           if (_context.User == null)
           {
               return Problem("Entity set 'TodoDBContext.User'  is null.");
           }
-            _context.User.Add(user);
+            User newUser = new User();
+            _mapper.Map(newUser, user);
+            _context.User.Add(newUser);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.ID }, user);
+            return CreatedAtAction("GetUser", new { id = newUser.ID }, newUser);
         }
 
         // DELETE: api/Users/5

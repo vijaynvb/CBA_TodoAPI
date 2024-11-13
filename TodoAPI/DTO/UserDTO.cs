@@ -5,8 +5,7 @@ namespace TodoAPI.DTO
 {
     public class UserDTO
     {
-        public Guid ID { get; set; }
-        [Max(200)]
+        [MaxLength(200)]
         [Required]
         public string Name { get; set; }
         [Email]
