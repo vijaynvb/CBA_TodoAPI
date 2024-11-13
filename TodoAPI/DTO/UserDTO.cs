@@ -11,5 +11,15 @@ namespace TodoAPI.DTO
         [Email]
         public string? Email { get; set; }
 
+        public UserDTO(string name, string? email)
+        {
+            Name = name;
+            Email = email;
+        }
+
+        public override string? ToString()
+        {
+            return "{ name: "+this.Name+", email: "+ this.Email+"}";
+        }
     }
 }
