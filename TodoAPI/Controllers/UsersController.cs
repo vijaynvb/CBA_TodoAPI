@@ -95,7 +95,7 @@ namespace TodoAPI.Controllers
               return Problem("Entity set 'TodoDBContext.User'  is null.");
           }
             User newUser = new User();
-            _mapper.Map(newUser, user);
+            newUser = _mapper.Map<User>( user);
             _context.User.Add(newUser);
             await _context.SaveChangesAsync();
 
