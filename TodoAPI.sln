@@ -7,6 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoAPI", "TodoAPI\TodoAPI.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoAPIRestAssuredTests", "TodoAPIRestAssuredTests\TodoAPIRestAssuredTests.csproj", "{9FC5B45B-DE9B-4AC5-9A2F-6492A019EB35}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{D496C02C-EDEB-45BF-811D-4DBC65BEFC26}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{4A03719D-3C23-47CC-AEDF-000EB985B3BD}"
+	ProjectSection(SolutionItems) = preProject
+		CI.yml = CI.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +31,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4A03719D-3C23-47CC-AEDF-000EB985B3BD} = {D496C02C-EDEB-45BF-811D-4DBC65BEFC26}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F774B0F3-956F-4E4A-89DE-AF4B9DA12BDC}
