@@ -59,7 +59,11 @@ sequenceDiagram
 
     Note over Client,UsersController: Potential security vulnerabilities:
     Note over Client,TodosController: Potential security vulnerabilities:
-    Note over UsersController,TodoDBContext: Lack of authentication and authorization checks
-    
+    Note over UsersController,TodoDBContext:  Lack of authentication and authorization checks
+    Note over UsersController,TodoDBContext: SQL Injection risks if inputs are not sanitized
+    Note over UsersController,TodoDBContext: Sensitive data exposure if responses are not properly secured
+    Note over UsersController,TodoDBContext: Insecure direct object references (IDOR) if IDs are not validated
+    Note over UsersController,TodoDBContext: Cross-Site Scripting (XSS) if user inputs are not properly escaped
+    Note over UsersController,TodoDBContext: Cross-Site Request Forgery (CSRF) if requests are not protected
 ```
  
