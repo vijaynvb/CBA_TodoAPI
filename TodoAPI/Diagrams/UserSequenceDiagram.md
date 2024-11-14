@@ -1,7 +1,9 @@
-﻿//create sequence diagram for the flow of crud operations on
+﻿// //create sequence diagram for the flow of crud operations on
 todos and users model by verifying the #file:'TodosController.cs'
 and #file:'UsersController.cs' as a mermaid sequencejourney
+
 ```mermaid
+
 sequenceDiagram
     participant Client
     participant UsersController
@@ -57,5 +59,15 @@ sequenceDiagram
     TodosController->>+TodoDBContext: Delete todo by ID
     TodoDBContext-->>-TodosController: Todo deleted
     TodosController-->>-Client: 204 No Content
- 
-```
+
+    Note over Client,UsersController: Potential security vulnerabilities:
+    Note over Client,TodosController: Potential security vulnerabilities:
+    Note over UsersController,TodoDBContext: 
+    - Lack of authentication and authorization checks
+    - SQL Injection risks if inputs are not sanitized
+    - Sensitive data exposure if responses are not properly secured
+    - Insecure direct object references (IDOR) if IDs are not validated
+    - Cross-Site Scripting (XSS) if user inputs are not properly escaped
+    - Cross-Site Request Forgery (CSRF) if requests are not protected
+ ```
+ // add security vulnerabilities to the sequence diagram
