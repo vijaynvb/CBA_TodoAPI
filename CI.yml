@@ -18,6 +18,12 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
+    - name: pwd
+      run: cwd
+
+    - name: ls
+      run: dir
+
     - name: Restore dependencies
       run: dotnet restore ../../TodoAPI/TodoAPI.csproj
 
