@@ -66,5 +66,5 @@ sequenceDiagram
       * Insecure direct object references (IDOR) if IDs are not validated
       * Cross-Site Scripting (XSS) if user inputs are not properly escaped
       * Cross-Site Request Forgery (CSRF) if requests are not protected
- ```
+```
  
