@@ -1,7 +1,4 @@
-﻿//create sequence diagram for the flow of crud operations on
-todos and users model by verifying the #file:'TodosController.cs'
-and #file:'UsersController.cs' as a mermaid sequencejourney
-// add security vulnerabilities to the sequence diagram
+﻿
 ```mermaid
 
 sequenceDiagram
