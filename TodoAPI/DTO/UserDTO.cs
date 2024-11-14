@@ -1,5 +1,4 @@
-﻿using DataAnnotationsExtensions;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace TodoAPI.DTO
 {
@@ -8,7 +7,7 @@ namespace TodoAPI.DTO
         [MaxLength(200)]
         [Required]
         public string Name { get; set; }
-        [Email]
+        [EmailAddress]
         public string? Email { get; set; }
 
         public UserDTO(string name, string? email)
@@ -19,7 +18,7 @@ namespace TodoAPI.DTO
 
         public override string? ToString()
         {
-            return "{ name: "+this.Name+", email: "+ this.Email+"}";
+            return "{ name: " + this.Name + ", email: " + this.Email + "}";
         }
     }
 }

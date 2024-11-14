@@ -18,7 +18,7 @@ namespace TodoAPITest.Controllers
         [SetUp]
         public void Setup()
         {
-            SERVER_BASE_URL = "http://localhost:5000";
+            SERVER_BASE_URL = "http://localhost:44342";
         }
 
         [Test]

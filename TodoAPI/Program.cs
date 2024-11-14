@@ -29,7 +29,7 @@ using (var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>(
     context.Database.Migrate();
 }
 
-app.UseHttpsRedirection();
+
 
 app.UseAuthorization();
 
