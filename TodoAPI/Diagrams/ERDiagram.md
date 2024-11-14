@@ -1,4 +1,5 @@
-﻿// generate ER diagram from the models in the project
+﻿// generate ER diagram from the models in the project, surronded by mermaid tags
+```mermaid
 
 erDiagram
     USER {
@@ -14,3 +15,4 @@ erDiagram
         int UserId
     }
     USER ||--o{ TODO : has
+```
