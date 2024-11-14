@@ -1,46 +1,61 @@
-﻿//create sequence diagram for the flow of crud operations on todos and users model by verifying the #file:'TodosController.cs'and #file:'UsersController.cs'
+﻿//create sequence diagram for the flow of crud operations on
+todos and users model by verifying the #file:'TodosController.cs'
+and #file:'UsersController.cs' as a mermaid sequencejourney
 ```mermaid
-Client -> UsersController: POST /api/Users
-UsersController -> TodoDBContext: Add User
-TodoDBContext -> Database: Save Changes
-UsersController -> Client: Return Created User
+sequenceDiagram
+    participant Client
+    participant UsersController
+    participant TodosController
+    participant TodoDBContext
 
-Client -> UsersController: GET /api/Users/{id}
-UsersController -> TodoDBContext: Get User by ID
-TodoDBContext -> Database: Retrieve User
-UsersController -> Client: Return User
+    Client->>+UsersController: GET /api/Users
+    UsersController->>+TodoDBContext: Get all users
+    TodoDBContext-->>-UsersController: List of users
+    UsersController-->>-Client: 200 OK, List of users
 
-Client -> UsersController: PUT /api/Users/{id}
-UsersController -> TodoDBContext: Update User
-TodoDBContext -> Database: Save Changes
-UsersController -> Client: Return NoContent
+    Client->>+UsersController: GET /api/Users/{id}
+    UsersController->>+TodoDBContext: Get user by ID
+    TodoDBContext-->>-UsersController: User with Todos
+    UsersController-->>-Client: 200 OK, User with Todos
 
-Client -> UsersController: DELETE /api/Users/{id}
-UsersController -> TodoDBContext: Get User by ID
-TodoDBContext -> Database: Retrieve User
-UsersController -> TodoDBContext: Remove User
-TodoDBContext -> Database: Save Changes
-UsersController -> Client: Return NoContent
+    Client->>+UsersController: POST /api/Users
+    UsersController->>+TodoDBContext: Add new user
+    TodoDBContext-->>-UsersController: User created
+    UsersController-->>-Client: 201 Created, User
 
-Client -> TodosController: POST /api/Todos
-TodosController -> TodoDBContext: Add Todo
-TodoDBContext -> Database: Save Changes
-TodosController -> Client: Return Created Todo
+    Client->>+UsersController: PUT /api/Users/{id}
+    UsersController->>+TodoDBContext: Update user by ID
+    TodoDBContext-->>-UsersController: User updated
+    UsersController-->>-Client: 204 No Content
 
-Client -> TodosController: GET /api/Todos/{id}
-TodosController -> TodoDBContext: Get Todo by ID
-TodoDBContext -> Database: Retrieve Todo
-TodosController -> Client: Return Todo
+    Client->>+UsersController: DELETE /api/Users/{id}
+    UsersController->>+TodoDBContext: Delete user by ID
+    TodoDBContext-->>-UsersController: User deleted
+    UsersController-->>-Client: 204 No Content
 
-Client -> TodosController: PUT /api/Todos/{id}
-TodosController -> TodoDBContext: Update Todo
-TodoDBContext -> Database: Save Changes
-TodosController -> Client: Return NoContent
+    Client->>+TodosController: GET /api/Todos
+    TodosController->>+TodoDBContext: Get all todos
+    TodoDBContext-->>-TodosController: List of todos
+    TodosController-->>-Client: 200 OK, List of todos
 
-Client -> TodosController: DELETE /api/Todos/{id}
-TodosController -> TodoDBContext: Get Todo by ID
-TodoDBContext -> Database: Retrieve Todo
-TodosController -> TodoDBContext: Remove Todo
-TodoDBContext -> Database: Save Changes
-TodosController -> Client: Return NoContent
+    Client->>+TodosController: GET /api/Todos/{id}
+    TodosController->>+TodoDBContext: Get todo by ID
+    TodoDBContext-->>-TodosController: Todo
+    TodosController-->>-Client: 200 OK, Todo
+
+    Client->>+TodosController: POST /api/Todos
+    TodosController->>+TodoDBContext: Add new todo
+    TodoDBContext-->>-TodosController: Todo created
+    TodosController-->>-Client: 201 Created, Todo
+
+    Client->>+TodosController: PUT /api/Todos/{id}
+    TodosController->>+TodoDBContext: Update todo by ID
+    TodoDBContext-->>-TodosController: Todo updated
+    TodosController-->>-Client: 204 No Content
+
+    Client->>+TodosController: DELETE /api/Todos/{id}
+    TodosController->>+TodoDBContext: Delete todo by ID
+    TodoDBContext-->>-TodosController: Todo deleted
+    TodosController-->>-Client: 204 No Content
+ 
 ```
