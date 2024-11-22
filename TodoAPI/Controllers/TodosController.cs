@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,7 @@ namespace TodoAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class TodosController : ControllerBase
     {
         private readonly TodoDBContext _context;
@@ -24,7 +26,7 @@ namespace TodoAPI.Controllers
             _context = context;
             _mapper = mapper;
         }
-
+        [AllowAnonymous]
         // GET: api/Todos
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Todo>>> GetTodo()
@@ -35,7 +37,7 @@ namespace TodoAPI.Controllers
           }
             return await _context.Todo.ToListAsync();
         }
-
+        
         // GET: api/Todos/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Todo>> GetTodo(Guid id)

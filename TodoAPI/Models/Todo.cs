@@ -13,8 +13,6 @@
 
         public bool IsComplete { get; set; }
 
-        public Guid TodoUserId { get; set; }
-        public User TodoUser { get; set; }
 
         public Todo()
         {
